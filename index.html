@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>METHOD CHECK iOS — Simple iOS Evidence Checker</title>
+<meta name="description" content="Check iOS diagnostic files in your browser. Nothing is uploaded.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div id="gate" class="gate">
+  <div class="gate-box">
+    <div class="brand">METHOD CHECK <span>iOS</span></div>
+    <div class="academy">APOS ACADEMY</div>
+    <p class="gate-msg">Enter password to continue</p>
+    <input type="password" id="gatePass" class="gate-input" placeholder="Password" autocomplete="off">
+    <button type="button" class="btn primary" id="gateBtn">Enter</button>
+    <div class="gate-err" id="gateErr" hidden>Wrong password.</div>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="brand">METHOD CHECK <span>iOS</span></div>
+  <div class="academy">APOS ACADEMY</div>
+  <div class="dev">DV BY HEXT</div>
+</header>
+
+<main>
+
+  <section id="dropzone" class="dropzone" aria-label="File upload area">
+    <input type="file" id="fileInput" multiple hidden
+           accept=".zip,.ipa,.tipa,.gz,.tgz,.tar,.plist,.mobileconfig,.db,.sqlite,.sqlite3,.log,.txt,.json,.xml,.ips">
+    <div class="dz-icon" aria-hidden="true">⇪</div>
+    <h1>Drop your files here</h1>
+    <p class="dz-formats">or click to choose: sysdiagnose ZIP, IPA, .plist, .mobileconfig, .log, .txt, SQLite</p>
+    <button type="button" id="browseBtn" class="btn primary">Choose files</button>
+    <p class="dz-hint">No sign-up. Nothing is uploaded. Files never leave your device.</p>
+  </section>
+
+  <section id="progressBox" class="progress-box" hidden>
+    <div class="progress-head">
+      <strong id="statusText">Working…</strong>
+      <span id="progressText" class="muted">0 / 0</span>
+    </div>
+    <div class="bar"><div class="bar-fill" id="barFill"></div></div>
+    <p class="muted small" id="progressDetail">Reading and unpacking files…</p>
+  </section>
+
+  <section id="errorBox" class="error-box" hidden></section>
+
+  <section id="results" hidden>
+
+    <div class="summary" id="summary"></div>
+
+    <div class="toolbar">
+      <input type="search" id="search" class="search" placeholder="Search results (app name, Bundle ID, log text)…">
+      <div class="toolbar-actions">
+        <button type="button" class="btn primary" id="exportTxt">Download report (.txt)</button>
+        <button type="button" class="btn" id="exportJson">Download data (.json)</button>
+        <button type="button" class="btn ghost" id="resetBtn">Start over</button>
+      </div>
+    </div>
+
+    <nav class="tabs" id="tabs">
+      <button type="button" data-tab="overview" class="active">Results <span class="count" id="c-apps">0</span></button>
+      <button type="button" data-tab="logs">Logs &amp; text <span class="count" id="c-logs">0</span></button>
+      <button type="button" data-tab="files">Files <span class="count" id="c-files">0</span></button>
+      <button type="button" data-tab="warnings">Warnings <span class="count" id="c-warnings">0</span></button>
+    </nav>
+
+    <div id="panel" class="panel"></div>
+  </section>
+
+</main>
+
+<footer>
+  <span>APOS ACADEMY · METHOD CHECK iOS</span>
+  <span class="muted">Everything runs locally in your browser.</span>
+</footer>
+
+<noscript><p class="noscript">This page needs JavaScript. Please enable it and reload.</p></noscript>
+
+<script src="analyzer.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
